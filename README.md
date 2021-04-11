@@ -3,7 +3,7 @@
 
 
 
-### 1. 부분 배낭 문제
+## 1. 부분 배낭 문제
 ![Fractional_Kanpsack](https://dudri63.github.io/image/algo14-1.png)
 
 배낭(Knapsack) 문제는 n개의 물건이 있고, 각 물건은 무게와 가치를 가지고 있을 때, 최대의 가치를 갖도록 한정된 용량의 배낭에 넣을 물건들을 정하는 문제이다.
@@ -16,7 +16,7 @@
 에 넣을 수 있을 만큼만 물건을 부분적으로 배낭에 담도록 한다.
 
 
-### 2. 알고리즘
+## 2. 알고리즘
 ```
 FractionalKnapsack
 입력: n개의 물건, 각 물건의 무게와 가치, 배낭의 용량 C
@@ -47,7 +47,9 @@ FractionalKnapsack
 
 
 
-### 3.
+## 3. 구현하기
+
+
 ```java
 import java.util.*;
 
@@ -129,7 +131,7 @@ public class Fractional_Knapsack {
 
 ```
 
-#### main 메소드
+### main 메소드
 
 ```java
  public static void main(String[] args) {
@@ -166,7 +168,7 @@ public class Fractional_Knapsack {
 `S`의 배열은 물건들을 단위무게당 가치를 기준으로 내림차순으로 정렬한다.
 
 
-#### 알고리즘 1 -4
+### 알고리즘 1 -4
 
 ```java
 static class Thing implements Comparable<Thing>{
@@ -203,7 +205,7 @@ static class Thing implements Comparable<Thing>{
 사실 이 코드에서 사용은 안 되지만 코드를 짜는 중간에 확인할때 사용하기위해 넣었다.
 
 
-#### 알고리즘 5-10
+### 알고리즘 5-10
 
 ```java
  public Fractional_Knapsack(ArrayList S, int c, int n) {
@@ -237,7 +239,7 @@ while문은 현재 가방무게와 집어넣은 무게값이 가방한도를 넘
 다음 리스트는 ( 은 25g 4(천원) ). w = 10 + 15 + 25 < 40 의 조건문이 false가 되므로 반복문을 탈출한다.
 
 
-#### 알고리즘 11-14
+### 알고리즘 11-14
 
 ```java
 if (c > total_w) {  // while문을 나와서도 현재까지 배낭에 담은 물건들의 무게가 배낭의 용량 C 보다 작으면
