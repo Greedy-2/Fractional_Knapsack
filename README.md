@@ -67,9 +67,14 @@ public class Fractional_Knapsack {
             String name; int w; int v;  // 각 물건의 종류,무게,가치
             name = sc.next(); w = sc.nextInt(); v = sc.nextInt();
             S.add(new Thing(name, w, v/w));    // 각 물건의 종류,무게,무게당 가치 삽입
-        }       
+        }
+        int startTime = (int) System.currentTimeMillis(); // 시작 시간
         Collections.sort(S); // compareTo 기준으로 정렬
         new Fractional_Knapsack(S, c,n);    // 함수 실행
+        
+        int endTime = (int) System.currentTimeMillis();// 종료 시간
+        int processTime = endTime - startTime; // 차이
+        System.out.printf("수행 시간: %d sec, %d ms", processTime / 1000, processTime % 1000);
     }
 
     static class Thing implements Comparable<Thing>{
@@ -238,15 +243,15 @@ while 문을 통과한 후에도 가방 용량`C`에 남은 공간이 있다면 
 리스트 `L`에 `x`의 무게를 (C-total_w)만큼 담고 `total_v`에는 `x`의 (C-total_w)g만큼의 가치를 추가하기 위해서 `total_v`에 `(C-total_w) * x.v / x.w`만큼 추가한다. 
 따라서 `total_v`의 최종 값은 `total_v + (C-total_w) * (x.v / x.w)`이다.
 
-### 실행결과
+## 4. 실행결과
 
-![](https://postfiles.pstatic.net/MjAyMTA0MTFfMjgw/MDAxNjE4MTM3MjY1MjIx.wlG4UtenYY75hl_k401kXxS_SNxqM_9rBorrQQeVCS0g.C7W_fPqItOqkJVutXT0wCi7YzWln2NLLlVEtjJaf-x0g.PNG.codnjs060/image.png?type=w773)
+![](https://postfiles.pstatic.net/MjAyMTA0MTFfMTU0/MDAxNjE4MTM1NDA4Njc5.G11CKR6Sej30H90elIn7alRl-HqnKRoB2lyyB9QLcLMg.3l1JXhWnQ1oTTZy9S81WKgK3dTT7PCEONBZiYuM-IdAg.PNG.codnjs060/image.png?type=w773)
 
 물건의 개수는 4개, 가방의 용량은 40g으로 입력하고 주석 50g 50000원, 은 25g 100000원, 백금 10g 600000원, 금 15g 750000를 입력했을 때 
 리스트 `L`에 백금과 금은 입력한 무게만큼 다 저장되고 가방의 남은 용량만큼 은이 15g들어간다.
 이때, 가방에 든 물건들의 가치의 합은 600000 + 750000 + 60000(은 15g의 가치)로 1410000이된다.
 
-## 4. 시간 복잡도
+## 5. 시간 복잡도
 
 
 Line 1
@@ -259,6 +264,12 @@ Line 11-14
 각각 O(1) 시간 걸린다.
 
 이 알고리즘의 시간복잡도는 O(n)+O(nlogn)+nxO(1)+O(1) = O(nlogn)이다.
+따라서 위의 예시처럼 4개의 물건을 입력했을때의 시간 복잡도는 4log4이다.
+
+
+## 6.참조 
+
+양성봉, 『알기 쉬운 알고리즘』. 파주: (주)생능출판사, 2013
 
 
 
