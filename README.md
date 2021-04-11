@@ -17,7 +17,7 @@
 
 
 ### 2. 알고리즘
-
+```
 FractionalKnapsack
 입력: n개의 물건, 각 물건의 무게와 가치, 배낭의 용량 C
 출력: 배낭에 담은 물건 리스트 L과 배낭에 담은 물건 가치의 합 v
@@ -43,7 +43,7 @@ FractionalKnapsack
 13. 	v = v +(C-w)만큼의 x의 가치
       }
 14.  return L, v
-
+```
 
 
 
