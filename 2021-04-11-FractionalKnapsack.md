@@ -59,7 +59,7 @@ Line 11-14
 ### 4. 알고리즘 구현
 
 ```java
-package Fractional_Knapsack;
+package greedy2;
 
 import java.util.*;
 
@@ -68,65 +68,66 @@ public class Fractional_Knapsack {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-        int n;
-        int c;
+        int n;                                              // 물건 개수
+        int c;                                              // 용량
         n = sc.nextInt();
         c = sc.nextInt();
-        ArrayList <BackPack> S = new ArrayList<>();
-        for(int i=0; i<n; i++) {
+        ArrayList <Thing> S = new ArrayList<>();         // 배낭 리스트 S
+        for(int i=0; i<n; i++) {                            // 물건이름, 무게, 가치 입력
             String name; int w; int v;
             name = sc.next(); w = sc.nextInt(); v = sc.nextInt();
-            S.add(new BackPack(name, w, v/w));
+            S.add(new Thing(name, w, v/w));
         }
-        System.out.println(S.toString());
-        Collections.sort(S);
-        System.out.println(S.toString());
-        new Fractional_Knapsack(S,c);
+        
+        System.out.println(S.toString());                   // 입력받은 리스트 S를 문자열로 출력
+        Collections.sort(S);                                // S안에 저장되어있는 값들을 가치가 높은순으로 배열
+        System.out.println(S.toString());                   // 리스트 S를 가치순으로 출력 ex) 백금 10g 6만원 , 금 25g 5만원...
+        new Fractional_Knapsack(S,c);                       // 배낭 L에 들어있는 물건 및 무게와 가방의 가치값들을 출력
     }
 
-    static class BackPack implements Comparable<BackPack>{
+    static class Thing implements Comparable<Thing>{  // 물건들의 값들을 입력받을 클래스 생성
         String name;
         int w;
         int v;
 
-        public BackPack(String name, int w, int v){
+        public Thing(String name, int w, int v){
             this.name = name;
             this.w = w;
             this.v = v;
         }
 
         @Override
-        public int compareTo(BackPack o) {
+        public int compareTo(Thing o) {
             return o.v-this.v;
-        }
+        }  // 가치단위로 내림차순
 
         @Override
         public String toString() {
             return name+" "+w+" "+v;
         }
     }
-    public Fractional_Knapsack(ArrayList S, int c) {
+    public Fractional_Knapsack(ArrayList S, int c) {             // 가방의 최대 용량안에서 가치가 높은물건들 순으로 집어넣는다
 
-        int total_w = 0;
-        int total_v = 0;
-        BackPack x = (BackPack) S.get(0);
-        int i = 0;
-        ArrayList L = new ArrayList<>();
+        int total_w = 0;                                         // 물건을 담은 가방의 무게 변수
+        int total_v = 0;                                         // 물건을 담은 가방의 가치 변수
+        Thing x = (Thing) S.get(0);                        // 물건의 값들이 저장되어있는 리스트 S중 가치가 가장높은 첫번째 리스트를 가져옴
+        int i = 0;                                               // 리스트 순서를 나타내는 변수 i
+        ArrayList L = new ArrayList<>();                         // 물건을 넣은 후 가방안에 값들을 저장할 리스트 L
 
-        while (total_w+(int)x.w <= c) {
-            L.add(x.name+" "+x.w+"g");
-            total_w = total_w+ (int) x.w;
-            total_v = total_v + ((int)x.w * (int)x.v);
-            i += 1;
-            x =(BackPack) S.get(i);
+        while (total_w+(int)x.w <= c) {                          // 현재가방무게 + 담은 물건의 무게 <= 가방용량 이면 반복
+            L.add(x.name+" "+x.w+"g");                           // 리스트 L에 물건 이름과 무게 추가
+            total_w = total_w+ (int) x.w;                        // 현재 가방무게에 담은물건무게 추가
+            total_v = total_v + ((int)x.w * (int)x.v);           // 현재 가방가치에 추가된가치 추가
+            i += 1;                                              // 리스트 순서 1증가시킴
+            x =(Thing) S.get(i);                              // 다음 가치가 높은 물건을 가져옴
         }
-        if (c >total_w) {
-            L.add(x.name+" "+(c-total_w)+"g");
+        if (c >total_w) {                                        // 아직 가방이 안찼다면 다음 조건문 실행
+            L.add(x.name+" "+(c-total_w)+"g");                   // 리스트 L에 물건 이름과 가방의 남은한도만큼의 무게를 추가
 
-            total_v = total_v + (c - total_w) * (int)x.v;
+            total_v = total_v + (c - total_w) * (int)x.v;        // 현재가치에 추가된 양의 무게만큼의 가치((c - total_w) * (int)x.v)를 추가
         }
-        System.out.println(L);
-        System.out.printf("총가치는 %d원", total_v);
+        System.out.println(L);                                   // 현재 가방에 저장되어있는 물건들의 값들(물건이름,무게)을 출력
+        System.out.printf("총가치는 %원",total_v);                 // 현재 가방의 가치 출력
     }
 
 
