@@ -67,17 +67,9 @@ public class Fractional_Knapsack {
             String name; int w; int v;  // 각 물건의 종류,무게,가치
             name = sc.next(); w = sc.nextInt(); v = sc.nextInt();
             S.add(new Thing(name, w, v/w));    // 각 물건의 종류,무게,무게당 가치 삽입
-        }
-        int startTime = (int) System.currentTimeMillis(); // 시작 시간
-
+        }       
         Collections.sort(S); // compareTo 기준으로 정렬
         new Fractional_Knapsack(S, c,n);    // 함수 실행
-
-        int endTime = (int) System.currentTimeMillis();// 종료 시간
-        int processTime = endTime - startTime; // 차이
-        System.out.printf("수행 시간: %d sec, %d ms", processTime / 1000, processTime % 1000);
-
-
     }
 
     static class Thing implements Comparable<Thing>{
@@ -147,17 +139,9 @@ public class Fractional_Knapsack {
             name = sc.next(); w = sc.nextInt(); v = sc.nextInt();
             S.add(new Thing(name, w, v/w));    // 각 물건의 종류,무게,무게당 가치 삽입
         }
-        int startTime = (int) System.currentTimeMillis(); // 시작 시간
-
         Collections.sort(S); // compareTo 기준으로 정렬
         new Fractional_Knapsack(S, c,n);    // 함수 실행
-
-        int endTime = (int) System.currentTimeMillis();// 종료 시간
-        int processTime = endTime - startTime; // 차이
-        System.out.printf("수행 시간: %d sec, %d ms", processTime / 1000, processTime % 1000);
-
-
-    }
+   }
 ```
 
 `n`은 물건 종류의 갯수이고 `c`는 배낭에 들어갈 수 있는 용량이다.
@@ -256,13 +240,27 @@ while 문을 통과한 후에도 가방 용량`C`에 남은 공간이 있다면 
 
 ### 실행결과
 
-![](https://postfiles.pstatic.net/MjAyMTA0MTFfMTU0/MDAxNjE4MTM1NDA4Njc5.G11CKR6Sej30H90elIn7alRl-HqnKRoB2lyyB9QLcLMg.3l1JXhWnQ1oTTZy9S81WKgK3dTT7PCEONBZiYuM-IdAg.PNG.codnjs060/image.png?type=w773)
+![](https://postfiles.pstatic.net/MjAyMTA0MTFfMjgw/MDAxNjE4MTM3MjY1MjIx.wlG4UtenYY75hl_k401kXxS_SNxqM_9rBorrQQeVCS0g.C7W_fPqItOqkJVutXT0wCi7YzWln2NLLlVEtjJaf-x0g.PNG.codnjs060/image.png?type=w773)
 
 물건의 개수는 4개, 가방의 용량은 40g으로 입력하고 주석 50g 50000원, 은 25g 100000원, 백금 10g 600000원, 금 15g 750000를 입력했을 때 
 리스트 `L`에 백금과 금은 입력한 무게만큼 다 저장되고 가방의 남은 용량만큼 은이 15g들어간다.
 이때, 가방에 든 물건들의 가치의 합은 600000 + 750000 + 60000(은 15g의 가치)로 1410000이된다.
 
 ## 4. 시간 복잡도
+
+
+Line 1
+n개의 물건 각각의 단위 무게 당 가치를 계산하는 데는 O(n) 시간 걸린다.
+Line 2
+물건의 단위 무게 당 가치에 대해서 내림차순으로 정렬하기 위해 O(nlogn) 시간이 걸린다.
+Line 5-10
+while-루프의 수행은 n번을 넘지 않으며, 루프 내부의 수행은 O(1) 시간이 걸린다. 
+Line 11-14
+각각 O(1) 시간 걸린다.
+
+이 알고리즘의 시간복잡도는 O(n)+O(nlogn)+nxO(1)+O(1) = O(nlogn)이다.
+
+
 
 
 
