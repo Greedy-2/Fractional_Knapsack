@@ -254,8 +254,15 @@ while 문을 통과한 후에도 가방 용량`C`에 남은 공간이 있다면 
 리스트 `L`에 `x`의 무게를 (C-total_w)만큼 담고 `total_v`에는 `x`의 (C-total_w)g만큼의 가치를 추가하기 위해서 `total_v`에 `(C-total_w) * x.v / x.w`만큼 추가한다. 
 따라서 `total_v`의 최종 값은 `total_v + (C-total_w) * (x.v / x.w)`이다.
 
+### 실행결과
 
+![](https://postfiles.pstatic.net/MjAyMTA0MTFfMTU0/MDAxNjE4MTM1NDA4Njc5.G11CKR6Sej30H90elIn7alRl-HqnKRoB2lyyB9QLcLMg.3l1JXhWnQ1oTTZy9S81WKgK3dTT7PCEONBZiYuM-IdAg.PNG.codnjs060/image.png?type=w773)
 
+물건의 개수는 4개, 가방의 용량은 40g으로 입력하고 주석 50g 50000원, 은 25g 100000원, 백금 10g 600000원, 금 15g 750000를 입력했을 때 
+리스트 `L`에 백금과 금은 입력한 무게만큼 다 저장되고 가방의 남은 용량만큼 은이 15g들어간다.
+이때, 가방에 든 물건들의 가치의 합은 600000 + 750000 + 60000(은 15g의 가치)로 1410000이된다.
+
+## 4. 시간 복잡도
 
 
 
